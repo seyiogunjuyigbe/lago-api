@@ -136,7 +136,7 @@ RSpec.describe "API v2 routing parity" do
     end
 
     unsupported = Rails.application.routes.recognize_path("/api/v2/credit_notes/#{id}/download", method: :post)
-    expect(unsupported.slice(:controller, :action)).to eq(controller: "application", action: "not_found")
+    expect(unsupported.slice(:controller, :action)).to eq(controller: "api/unknown_v2_routes", action: "show")
     expect(Rails.application.routes.recognize_path("/api/v1/credit_notes/#{id}/download", method: :post)[:controller])
       .to eq("api/v1/credit_notes")
 
